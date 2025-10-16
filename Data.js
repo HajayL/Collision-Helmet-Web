@@ -1,4 +1,4 @@
-var target = "https://test.mosquitto.org:8883";
+var target = "https://test.mosquitto.org:8081";
 var topic = "NAIT/CNT/M/Test";
 
 var connectionText = $("#connection");
