@@ -1,13 +1,30 @@
-import fs from 'fs';
-import mqtt from 'mqtt';
+client = new Paho.MQTT.Client("354e093383a04b599092b335bddb950e.s1.eu.hivemq.cloud", Number(8883), "clientId");
 
-const options = {
-protocol: 'mqtts',
-host: '354e093383a04b599092b335bddb950e.s1.eu.hivemq.cloud',
-port: 8883,
-ca: [fs.readFileSync('/path/to/ca.crt')],
-cert: fs.readFileSync('/path/to/client.crt'),
-key: fs.readFileSync('/path/to/client.key'),
-};
+// set callback handlers
+client.onConnectionLost = onConnectionLost;
+client.onMessageArrived = onMessageArrived;
 
-const client = mqtt.connect(options);
+// connect the client
+client.connect({onSuccess:onConnect});
+
+// called when the client connects
+function onConnect() {
+  // Once a connection has been made, make a subscription and send a message.
+  console.log("onConnect");
+  client.subscribe("/World");
+  message = new Paho.MQTT.Message("Hello");
+  message.destinationName = "/World";
+  client.send(message); 
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+  if (responseObject.errorCode !== 0) {
+    console.log("onConnectionLost:"+responseObject.errorMessage);
+  }
+}
+
+// called when a message arrives
+function onMessageArrived(message) {
+  console.log("onMessageArrived:"+message.payloadString);
+}
