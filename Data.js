@@ -1,4 +1,4 @@
-var target = "https://test.mosquitto.org:8883";
+var target = "https://test.mosquitto.org:8081";
 var topic = "NAIT/CNT/M/Test";
 
 var connectionText = $("#connection");
@@ -62,7 +62,7 @@ function Action(action)
 
 function Connect()
 {
-  const client = mqtt.connect(target, {protocol: "mqtts", clean: true, connectTimeout: 60000, clientId: 'srv__NAIT_M', username: '', password: ''});
+  const client = mqtt.connect(target, {clean: true, connectTimeout: 60000, clientId: 'srv__NAIT_M', username: '', password: ''});
   client.subscribe(topic);
 
   client.on('message', function (topic, message) { Action(message.toString()); });
