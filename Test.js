@@ -1,7 +1,7 @@
 
 
 // Test for update
-client = new MQTT.Client("354e093383a04b599092b335bddb950e.s1.eu.hivemq.cloud", Number(8883), "clientId");
+client = new Paho.MQTT.Client("354e093383a04b599092b335bddb950e.s1.eu.hivemq.cloud", Number(8883), "clientId");
 
 // set callback handlers
 client.onConnectionLost = onConnectionLost;
@@ -15,7 +15,7 @@ function onConnect() {
   // Once a connection has been made, make a subscription and send a message.
   console.log("onConnect");
   client.subscribe("/World");
-  message = new MQTT.Message("Hello");
+  message = new Paho.MQTT.Message("Hello");
   message.destinationName = "/World";
   client.send(message); 
 }
