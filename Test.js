@@ -1,33 +1,28 @@
-
-
-// Test for update
-client = new Paho.MQTT.Client("354e093383a04b599092b335bddb950e.s1.eu.hivemq.cloud", Number(8883), "clientId");
-
-// set callback handlers
-client.onConnectionLost = onConnectionLost;
-client.onMessageArrived = onMessageArrived;
-
-// connect the client
-client.connect({onSuccess:onConnect});
-
-// called when the client connects
-function onConnect() {
-  // Once a connection has been made, make a subscription and send a message.
-  console.log("onConnect");
-  client.subscribe("/World");
-  message = new Paho.MQTT.Message("Hello");
-  message.destinationName = "/World";
-  client.send(message); 
+var options = {
+    host: '354e093383a04b599092b335bddb950e.s1.eu.hivemq.cloud',
+    port: 8883,
+    protocol: 'mqtts',
 }
 
-// called when the client loses its connection
-function onConnectionLost(responseObject) {
-  if (responseObject.errorCode !== 0) {
-    console.log("onConnectionLost:"+responseObject.errorMessage);
-  }
-}
+// initialize the MQTT client
+var client = mqtt.connect(options);
 
-// called when a message arrives
-function onMessageArrived(message) {
-  console.log("onMessageArrived:"+message.payloadString);
-}
+// setup the callbacks
+client.on('connect', function () {
+    console.log('Connected');
+});
+
+client.on('error', function (error) {
+    console.log(error);
+});
+
+client.on('message', function (topic, message) {
+    // called each time a message is received
+    console.log('Received message:', topic, message.toString());
+});
+
+// subscribe to topic 'my/test/topic'
+client.subscribe('my/test/topic');
+
+// publish message 'Hello' to topic 'my/test/topic'
+client.publish('my/test/topic', 'Hello');
