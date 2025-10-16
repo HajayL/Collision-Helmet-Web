@@ -1,3 +1,4 @@
+// Test for update
 client = new Paho.MQTT.Client("354e093383a04b599092b335bddb950e.s1.eu.hivemq.cloud", Number(8883), "clientId");
 
 // set callback handlers
