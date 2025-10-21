@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "mqtt": "^5.14.1",
-    "requirejs": "^2.3.7"
-  }
-}
