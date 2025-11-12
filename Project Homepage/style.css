@@ -7,9 +7,9 @@ body{
 }
 
 #yourusername,#yourpassword {
-  width: 100%;
+  width: 90%;
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid white; 
 }
 
 .username{
@@ -52,7 +52,7 @@ body{
     background: bisque;
 }
 
-#Form1 {
+main {
     font-size: 1.5em;
     padding: 3%;
     background: white;
