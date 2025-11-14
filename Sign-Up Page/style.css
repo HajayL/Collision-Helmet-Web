@@ -6,19 +6,19 @@ body{
     background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Titans_Texans.jpg/1200px-Titans_Texans.jpg') center/cover no-repeat;
 }
 
-#yourresetusername,#yourdeleteusername,#youroldpassword,#yournewpassword,#yourdeletepassword  {
+#yourusername,#yourpassword, #yourconfirmpassword {
   width: 90%;
   padding: 10px;
-  border: 1px solid white;
+  border: 1px solid white; 
 }
 
-.changeusername, .oldpin, .newpin, .option, .deleteusername, .pin{
+.username, .pin, .confirmpin, .accounttype{
     margin-bottom: 1.5em;
 }
 
 .container{
     padding-top: 10px;
-    padding-bottom: 10px;  
+    padding-bottom: 10px;
     padding-left: 20px;
     padding-right: 20px;
 }
@@ -36,7 +36,7 @@ body{
     text-shadow: black 3px 2px;
 }
 
-#submitrst, #submitdel{
+#submit, #reset{
     width: 100%;
     background: burlywood;
     color: white;
@@ -44,7 +44,7 @@ body{
     border-radius: 8px;
 }
 
-#submitrst:hover, #submitdel:hover {
+#submit:hover, #reset:hover {
     background: bisque;
 }
 

@@ -1,0 +1,33 @@
+$(document).ready(function(){
+    $(".deletepassword").hide()
+    $(".deleteusername").hide()
+    $(".pin").hide()
+    $(".deleteactions").hide()
+    $("#select").change(function(){
+        console.log($("#select").val());
+        if ($("#select").val() == "changepass"){
+            $(".deletepassword").hide()
+            $(".deleteusername").hide()
+            $(".pin").hide()
+            $(".deleteactions").hide()
+            $(".changepassword").show()
+            $(".changeusername").show()
+            $(".oldpin").show()
+            $(".newpin").show()
+            $(".changeactions").show()
+            console.log($("#select").val());
+        }
+        else{
+            $(".deletepassword").show()
+            $(".deleteusername").show()
+            $(".pin").show()
+            $(".deleteactions").show()
+            $(".changepassword").hide()
+            $(".changeusername").hide()
+            $(".oldpin").hide()
+            $(".newpin").hide()
+            $(".changeactions").hide()
+            console.log($("#select").val());
+        }
+    });
+});
