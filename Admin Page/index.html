@@ -20,47 +20,63 @@
             <div class="option"> 
                 <label for="select">Choose a option:</label><br>
                 <select name="select" id="select">
-                    <option value="changepass">Change Password</option>
+                    <option value="changepass">Force change Password</option>
                     <option value="deleteaccount">Delete Account</option>
+                    <option value="assign">Assign Rank</option>
                 </select>
             </div>
 
+            <div id="changepass">
+                <h2 class="changepassword">Change Password</h2>
 
-            <h2 class="changepassword">Change Password</h2>
+                <div class="changeusername">
+                    <label for="username">Username: </label>
+                    <input type="text" id="yourresetusername" name="username" placeholder="Your username">
+                </div>
 
-            <div class="changeusername">
-                <label for="username">Username: </label>
-                <input type="text" id="yourresetusername" name="username" placeholder="Your username">
+                <div class="newpin"> 
+                    <label for="pin">New Password: </label>
+                    <input type="password" id="yournewpassword" name="pin" placeholder="Your new pin">
+                </div>
+
+                <div class="changeactions">
+                    <input type="submit" id="submitrst" value="Reset Password">
+                </div>
             </div>
 
-            <div class="oldpin"> 
-                <label for="pin">Old Password: </label>
-                <input type="password" id="youroldpassword" name="pin" placeholder="Your old pin">
+            <div id="deletepassword">
+                <h2 class="deletepassword">Delete Account</h2>
+
+                <div class="deleteusername">
+                    <label for="username">Username: </label>
+                    <input type="text" id="yourdeleteusername" name="username" placeholder="Your username">
+                </div>
+                
+                <div class="deleteactions">
+                    <input type="submit" id="submitdel" value="Delete User">
+                </div>
             </div>
 
-            <div class="newpin"> 
-                <label for="pin">New Password: </label>
-                <input type="password" id="yournewpassword" name="pin" placeholder="Your new pin">
-            </div>
+            <div id="arank">
+                <h2 class="arank">Assign Rank</h2>
 
-            <div class="changeactions">
-                <input type="submit" id="submitrst" value="Reset Password">
-            </div>
+                <div class="assignrankusername">
+                    <label for="username">Username: </label>
+                    <input type="text" id="yourassignusername" name="username" placeholder="Your username">
+                </div>
 
-            <h2 class="deletepassword">Delete Account</h2>
-
-            <div class="deleteusername">
-                <label for="username">Username: </label>
-                <input type="text" id="yourdeleteusername" name="username" placeholder="Your username">
-            </div>
-
-            <div class="pin"> 
-                <label for="pin">Password: </label>
-                <input type="password" id="yourdeletepassword" name="pin" placeholder="Your pin">
-            </div>
-            
-            <div class="deleteactions">
-                <input type="submit" id="submitdel" value="Delete User">
+                <div class="optionassign"> 
+                    <label for="select">Choose a rank:</label><br>
+                    <select name="select" id="selectassign">
+                        <option value="player">Player</option>
+                        <option value="team">Team</option>
+                        <option value="stadium">Stadium</option>
+                    </select>
+                </div>
+                
+                <div class="submitassign">
+                    <input type="submit" id="submitas" value="Assign to User">
+                </div>
             </div>
 
         </main>

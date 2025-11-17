@@ -1,32 +1,24 @@
 $(document).ready(function(){
-    $(".deletepassword").hide()
-    $(".deleteusername").hide()
-    $(".pin").hide()
-    $(".deleteactions").hide()
+    $("#deletepassword").hide()
+    $("#arank").hide()
     $("#select").change(function(){
         console.log($("#select").val());
         if ($("#select").val() == "changepass"){
-            $(".deletepassword").hide()
-            $(".deleteusername").hide()
-            $(".pin").hide()
-            $(".deleteactions").hide()
-            $(".changepassword").show()
-            $(".changeusername").show()
-            $(".oldpin").show()
-            $(".newpin").show()
-            $(".changeactions").show()
+            $("#deletepassword").hide()
+            $("#changepass").show()
+            $("#arank").hide()
             console.log($("#select").val());
         }
-        else{
-            $(".deletepassword").show()
-            $(".deleteusername").show()
-            $(".pin").show()
-            $(".deleteactions").show()
-            $(".changepassword").hide()
-            $(".changeusername").hide()
-            $(".oldpin").hide()
-            $(".newpin").hide()
-            $(".changeactions").hide()
+        else if ($("#select").val() == "deleteaccount"){
+            $("#deletepassword").show()
+            $("#changepass").hide()
+            $("#arank").hide()
+            console.log($("#select").val());
+        }
+        else {
+            $("#deletepassword").hide()
+            $("#changepass").hide()
+            $("#arank").show()
             console.log($("#select").val());
         }
     });
