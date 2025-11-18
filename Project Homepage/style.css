@@ -12,11 +12,7 @@ body{
   border: 1px solid white; 
 }
 
-.username{
-    margin-bottom: 1.5em;
-}
-
-.pin{
+.username, .pin, .signup{
     margin-bottom: 1.5em;
 }
 
