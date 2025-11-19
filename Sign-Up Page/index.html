@@ -5,8 +5,10 @@
         <title>Concussion Detection Based Football Helmet - Sign-Up Page</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./style.css">
+        <script src="script.js"></script>
     </head>
     <body class="grid-container"> 
 
@@ -16,6 +18,8 @@
 
         <main class="container">
             <h2>Sign-Up</h2>
+
+            <h3 id="test"></h3>
 
             <div class="username">
                 <label for="username">Username: </label>
@@ -35,9 +39,9 @@
             <div class="accounttype">
                 <label for="select">Choose a Account Type:</label><br>
                 <select name="select" id="select">
-                    <option value="stadium">Stadium</option>
-                    <option value="team">Team</option>
-                    <option value="player" selected>Player</option>
+                    <option value="Stadium">Stadium</option>
+                    <option value="Team">Team</option>
+                    <option value="User" selected>Player</option>
                 </select>
             </div>
             
