@@ -23,7 +23,7 @@ $(document).ready(function(){
 
   function SubmitDone(ret){
     if (JSON.parse(ret).id >= 0){
-      window.location.href = "../User Data Display/index.html";
+      window.location.href = "../User Data Display/index.html?id="+JSON.parse(ret).id
     }
     else{
       document.getElementById("test").innerHTML = JSON.parse(ret).message;

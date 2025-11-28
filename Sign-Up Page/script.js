@@ -30,5 +30,9 @@ $(document).ready(function(){
 
   function SubmitDone(ret){
     document.getElementById("test").innerHTML = JSON.parse(ret).message;
+    if (JSON.parse(ret).success == true){
+      console.log("in");
+      window.location.href = "../Project Homepage/index.html";
+    }
   }
 });

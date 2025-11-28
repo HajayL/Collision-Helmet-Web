@@ -1,7 +1,12 @@
 $(document).ready(function(){
-  $("#submit").click(function(){
+  function fetchData() {
+    console.log("in");
+    let store = {};
+    let urlParams = new URLSearchParams(window.location.search);
+    let UserID = urlParams.get('id');
+    store = {UserID};
     CallAJAX("https://localhost:7156/GetData", store, "POST", "html", SubmitDone, Error);
-  });
+  } 
 
   function CallAJAX(url, postData, type, dataType, fxnSuccess, fxnError) {
     let ajaxOptions = {};
@@ -16,6 +21,12 @@ $(document).ready(function(){
   }
 
   function SubmitDone(ret){
-    document.getElementById("test").innerHTML = JSON.parse(ret).message;
+    let temp = JSON.parse(ret);
+    document.getElementById("test").innerHTML = temp.userInfo;
+    if(Object.keys(temp).length == 1){
+      document.getElementById("test").innerHTML = document.getElementById("test").innerHTML +  "<br>No Data Available for this ID";
+    }
   }
+
+  setInterval(fetchData, 500);
 });

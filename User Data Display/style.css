@@ -12,11 +12,7 @@ body{
   border: 1px solid white;
 }
 
-.username{
-    margin-bottom: 1.5em;
-}
-
-.pin{
+.username, .pin{
     margin-bottom: 1.5em;
 }
 
@@ -52,7 +48,7 @@ body{
     background: bisque;
 }
 
-#Form1 {
+main {
     font-size: 1.5em;
     padding: 3%;
     background: white;
