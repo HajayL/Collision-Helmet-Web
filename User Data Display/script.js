@@ -2,8 +2,8 @@ $(document).ready(function(){
   function fetchData() {
     console.log("in");
     let store = {};
-    let urlParams = new URLSearchParams(window.location.search);
-    let UserID = urlParams.get('id');
+ 
+   let urlParams = new URLSearchParams(window.location.search);    let UserID = urlParams.get('id');
     store = {UserID};
     CallAJAX("https://localhost:7156/GetData", store, "POST", "html", SubmitDone, Error);
   } 
@@ -22,11 +22,47 @@ $(document).ready(function(){
 
   function SubmitDone(ret){
     let temp = JSON.parse(ret);
-    document.getElementById("test").innerHTML = temp.userInfo;
+    document.getElementById("test").innerHTML = temp.userInfo[0];
     if(Object.keys(temp).length == 1){
       document.getElementById("test").innerHTML = document.getElementById("test").innerHTML +  "<br>No Data Available for this ID";
     }
+    else{
+      document.getElementById("ax").innerHTML = temp.userInfo[4];
+      document.getElementById("ay").innerHTML = temp.userInfo[5];
+      document.getElementById("az").innerHTML = temp.userInfo[6];
+      document.getElementById("gx").innerHTML = temp.userInfo[7];
+      document.getElementById("gy").innerHTML = temp.userInfo[8];
+      document.getElementById("gz").innerHTML = temp.userInfo[9];
+      //let riskp = Percent()
+      //document.getElementById("risk").innerHTML = riskp + "%";
+
+      let risk = document.getElementById("risk");
+      risk.style.color = "white";
+
+      if(riskp <= 10){
+        risk.style.backgroundColor = "green";
+      } 
+
+      else if(riskp <= 25){
+        risk.style.backgroundColor = "orange";
+      }
+
+      else {
+        risk.style.backgroundColor = "red";
+      }
+    }
   }
+
+  function Percent(accel, gyro) {
+    const b0 = -10.2;
+    const b1 = 0.0433;
+    const b2 = 0.000873;
+    const b3 = -9.2e-7;
+
+    const z = b0 + b1 * accel + b2 * gyro + b3 * accel * gyro;
+    const final = 1 / (1 + Math.exp(-z));
+    return (final * 100).toFixed(2);
+  } 
 
   setInterval(fetchData, 500);
 });

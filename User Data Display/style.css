@@ -44,8 +44,25 @@ body{
     border-radius: 8px;
 }
 
+#risk {
+    font-weight: bold;
+    color: white;
+}
+
 #submit:hover, #reset:hover {
     background: bisque;
+}
+
+.stats {
+    display: flex;
+    gap: 15px;
+}
+
+.stat {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px black;
 }
 
 main {
