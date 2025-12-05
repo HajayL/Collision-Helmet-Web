@@ -35,7 +35,7 @@ body{
     text-shadow: black 3px 2px;
 }
 
-#submit, #reset{
+button, button{
     width: 100%;
     background: burlywood;
     color: white;
@@ -43,7 +43,7 @@ body{
     border-radius: 8px;
 }
 
-#submit:hover, #reset:hover {
+button:hover, button:hover {
     background: bisque;
 }
 

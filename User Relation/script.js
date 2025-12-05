@@ -1,24 +1,45 @@
 $(document).ready(function(){
-  $(".stadium").hide()
-  $("#select").change(function(){
-    console.log($("#select").val());
-    if ($("#select").val() == "userteam"){
-      $(".stadium").hide()
-      $(".username").show()
-      console.log($("#select").val());
+  let urlParams = new URLSearchParams(window.location.search);
+  let uID = urlParams.get('id');
+
+  CallAJAX("https://localhost:7156/GetCode", {UserID: uID}, "POST", "json", (resp) => {
+    if(resp.success){
+      $("#code").val(resp.code);
+      $("#connectedTxt").html("Connected: " + resp.attached);
+    }else{
+      $("#connectedTxt").hide();
     }
-    else {
-      $(".username").hide()
-      $(".stadium").show()
-      console.log($("#select").val());
-    }
+  }, Error);
+
+  $("#genCode").click(() => {
+    CallAJAX("https://localhost:7156/GenerateCode", {UserID: uID}, "POST", "json", (resp) => {
+      if(resp["success"]){
+        $("#code").val(resp.code);
+        $("#connectedTxt").html("Connected: 0");
+      }
+    }, Error);
   });
 
-  $("#submit").click(function(){
-    CallAJAX("https://localhost:7156/GetData", store, "POST", "html", SubmitDone, Error);
+  $("#attachCodeBtn").click(() => {
+    CallAJAX("https://localhost:7156/AttachCode", {UserID: uID, Code: $("#attachCode").val()}, "POST", "json", (resp) => {
+      if(resp["success"]){
+        $("#attachCode").val("Success");
+      }else{
+        $("#attachCode").val("Failure");
+      }
+    }, Error);
   });
 
-  function CallAJAX(url, postData, type, dataType, fxnSuccess, fxnError) {
+  $("#dataDisplay").click(() => {
+    window.location.href = "../User Data Display/index.html?id="+uID;
+  });
+
+  function SubmitDone(ret){
+    //document.getElementById("test").innerHTML = JSON.parse(ret).message;
+  }
+});
+
+function CallAJAX(url, postData, type, dataType, fxnSuccess, fxnError) {
     let ajaxOptions = {};
     ajaxOptions['url'] = url;
     ajaxOptions['data'] = JSON.stringify(postData);
@@ -29,8 +50,3 @@ $(document).ready(function(){
     concorde.done(fxnSuccess);
     concorde.fail(fxnError);
   }
-
-  function SubmitDone(ret){
-    //document.getElementById("test").innerHTML = JSON.parse(ret).message;
-  }
-});

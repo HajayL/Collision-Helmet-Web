@@ -1,12 +1,19 @@
+
 $(document).ready(function(){
+  let urlParams = new URLSearchParams(window.location.search);
+   let UserID = urlParams.get('id');
+
   function fetchData() {
-    console.log("in");
+    //console.log("in");
     let store = {};
- 
-   let urlParams = new URLSearchParams(window.location.search);    let UserID = urlParams.get('id');
+   
     store = {UserID};
     CallAJAX("https://localhost:7156/GetData", store, "POST", "html", SubmitDone, Error);
   } 
+
+  $("#relateBtn").click(() => {
+    window.location.href = "../User Relation/index.html?id="+UserID;
+  });
 
   function CallAJAX(url, postData, type, dataType, fxnSuccess, fxnError) {
     let ajaxOptions = {};
@@ -20,6 +27,7 @@ $(document).ready(function(){
     concorde.fail(fxnError);
   }
 
+  /*
   function SubmitDone(ret){
     let temp = JSON.parse(ret);
     document.getElementById("test").innerHTML = temp.userInfo[0][0];
@@ -31,8 +39,8 @@ $(document).ready(function(){
         document.getElementById("gx").innerHTML = parseInt(temp.userInfo[9][5]);
         document.getElementById("gy").innerHTML = parseInt(temp.userInfo[9][6]);
         document.getElementById("gz").innerHTML = parseInt(temp.userInfo[9][7]);
-        //let riskp = Percent()
-        //document.getElementById("risk").innerHTML = riskp + "%";
+        let riskp = Percent()
+        document.getElementById("risk").innerHTML = riskp + "%";
 
         let risk = document.getElementById("risk");
         risk.style.color = "white";
@@ -58,6 +66,7 @@ $(document).ready(function(){
       }
     }
   }
+  */
 
   function Percent(accel, gyro) {
     const b0 = -10.2;
@@ -70,5 +79,5 @@ $(document).ready(function(){
     return (final * 100).toFixed(2);
   } 
 
-  setInterval(fetchData, 500);
+  //setInterval(fetchData, 500);
 });

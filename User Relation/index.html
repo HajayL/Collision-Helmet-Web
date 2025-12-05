@@ -19,38 +19,37 @@
         <main class="container">
             <h2>Set Relation</h2>
 
-            <div class="option"> 
-                <label for="select">Select a Mode:</label><br>
-                <select name="select" id="select">
-                    <option value="userteam">User -> Team</option>
-                    <option value="teamstadium">Team -> Stadium</option>
-                </select>
+            <div class="code">
+                <h3>User code</h3>
+                <h5 id="connectedTxt">Connected: 0</h5>
+                <label for="code">Code: </label>
+                <input type="text" id="code" name="code" placeholder="No code" readonly>
             </div>
 
-            <h3 id="test"></h3>
+            <br>
 
-            <div class="username">
-                <label for="username">Username: </label>
-                <input type="text" id="yourusername" name="username" placeholder="Your username">
+            <div class="GenerateCode"> 
+                <button id="genCode">Generate Code</button>
             </div>
 
-            <div class="team">
-                <label for="team">Team: </label>
-                <input type="text" id="yourteam" name="team" placeholder="Your team">
+            <div class="attachCode">
+                <h3>Connect to another user</h3>
+                <label for="attachCode">Code: </label>
+                <input type="text" id="attachCode" name="code" placeholder="No code">
             </div>
 
-            <div class="stadium">
-                <label for="stadium">Stadium: </label>
-                <input type="text" id="yourstadium" name="stadium" placeholder="Your stadium">
+            <br>
+
+            <div class="AttachCode"> 
+                <button id="attachCodeBtn">Attach Code</button>
             </div>
 
-            <div class="pin"> 
-                <label for="pin">Password for Stadium/Team: </label>
-                <input type="password" id="yourpassword" name="pin" placeholder="Your pin">
-            </div>
-            
-            <div class="actions">
-                <input type="submit" id="submit" value="Set Relation">
+            <br>
+            <hr>
+            <br>
+
+            <div class="ReturnButton"> 
+                <button id="dataDisplay">Return to Data Display</button>
             </div>
         </main>
 
