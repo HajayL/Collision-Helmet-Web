@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <title>Concussion Detection Based Football Helmet - Sign-Up Page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <script src="script.js"></script>
+    </head>
+    <body class="grid-container"> 
+
+        <header class = "header container">
+            Concussion Detection Based Football Helmet - Sign-Up Page
+        </header>
+
+        <main class="container">
+            <h2>Sign-Up</h2>
+
+            <h3 id="test"></h3>
+
+            <div class="username">
+                <label for="username">Username: </label>
+                <input type="text" id="yourusername" name="username" placeholder="Your username">
+            </div>
+
+            <div class="pin"> 
+                <label for="pin">Password: </label>
+                <input type="password" id="yourpassword" name="pin" placeholder="Your pin">
+            </div>
+
+            <div class="confirmpin"> 
+                <label for="pin">Connfirm Password: </label>
+                <input type="password" id="yourconfirmpassword" name="pin" placeholder="Confirm your pin">
+            </div>
+
+            <div class="accounttype">
+                <label for="select">Choose a Account Type:</label><br>
+                <select name="select" id="select">
+                    <option value="Stadium">Stadium</option>
+                    <option value="Team">Team</option>
+                    <option value="User" selected>Player</option>
+                </select>
+            </div>
+            
+            <div class="actions">
+                <input type="submit" id="submit" value="Sign-Up">
+            </div>
+        </main>
+
+        <footer class = "container footer">&#169 Nathan Rogers & Hajay Lawson<br> last updated: NOV 14 2025</footer>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+    <head>
+        <title>Concussion Detection Based Football Helmet - Settings / Control Page</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <script src="script.js"></script>
+    </head>
+    <body class="grid-container">
+
+        <header class = "header container">
+            Concussion Detection Based Football Helmet - Settings / Control Page
+        </header>
+
+        <main class="container">
+            <div class="option"> 
+                <label for="select">Choose a option:</label><br>
+                <select name="select" id="select">
+                    <option value="changepass">Change Password</option>
+                    <option value="deleteaccount">Delete Account</option>
+                </select>
+            </div>
+
+            <h3 id="test"></h3>
+
+            <h2 class="changepassword">Change Password</h2>
+
+            <div class="changeusername">
+                <label for="username">Username: </label>
+                <input type="text" id="yourresetusername" name="username" placeholder="Your username">
+            </div>
+
+            <div class="oldpin"> 
+                <label for="pin">Old Password: </label>
+                <input type="password" id="youroldpassword" name="pin" placeholder="Your old pin">
+            </div>
+
+            <div class="newpin"> 
+                <label for="pin">New Password: </label>
+                <input type="password" id="yournewpassword" name="pin" placeholder="Your new pin">
+            </div>
+
+            <div class="changeactions">
+                <input type="submit" id="submitrst" value="Reset Password">
+            </div>
+
+            <h2 class="deletepassword">Delete Account</h2>
+
+            <div class="deleteusername">
+                <label for="username">Username: </label>
+                <input type="text" id="yourdeleteusername" name="username" placeholder="Your username">
+            </div>
+
+            <div class="pin"> 
+                <label for="pin">Password: </label>
+                <input type="password" id="yourdeletepassword" name="pin" placeholder="Your pin">
+            </div>
+            
+            <div class="deleteactions">
+                <input type="submit" id="submitdel" value="Delete User">
+            </div>
+
+        </main>
+
+        <footer class = "container footer">&#169 Nathan Rogers & Hajay Lawson<br> last updated: NOV 12 2025</footer>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+
+body{
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    flex-direction: column;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Titans_Texans.jpg/1200px-Titans_Texans.jpg') center/cover no-repeat;
+}
+
+#yourusername,#yourpassword {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid white;
+}
+
+.username, .pin{
+    margin-bottom: 1.5em;
+}
+
+.container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.header,.footer{
+    text-align: center;
+    background-color: brown;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    text-shadow: black 3px 2px;
+}
+
+#submit, #reset{
+    width: 100%;
+    background: burlywood;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+#risk {
+    font-weight: bold;
+    color: white;
+}
+
+#submit:hover, #reset:hover {
+    background: bisque;
+}
+
+.stats {
+    display: flex;
+    gap: 15px;
+}
+
+.stat {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px black;
+}
+
+main {
+    font-size: 1.5em;
+    padding: 3%;
+    background: white;
+    border-radius: 12px;
+    max-width: 400px;
+    margin: 3em auto;
+    box-shadow: 0 6px 20px black;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5em;
+    color: black;
+}
