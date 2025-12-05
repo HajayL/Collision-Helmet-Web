@@ -22,33 +22,38 @@ $(document).ready(function(){
 
   function SubmitDone(ret){
     let temp = JSON.parse(ret);
-    document.getElementById("test").innerHTML = temp.userInfo[0];
+    document.getElementById("test").innerHTML = temp.userInfo[0][0];
     if(Object.keys(temp).length == 1){
-      document.getElementById("test").innerHTML = document.getElementById("test").innerHTML +  "<br>No Data Available for this ID";
-    }
-    else{
-      document.getElementById("ax").innerHTML = temp.userInfo[4];
-      document.getElementById("ay").innerHTML = temp.userInfo[5];
-      document.getElementById("az").innerHTML = temp.userInfo[6];
-      document.getElementById("gx").innerHTML = temp.userInfo[7];
-      document.getElementById("gy").innerHTML = temp.userInfo[8];
-      document.getElementById("gz").innerHTML = temp.userInfo[9];
-      //let riskp = Percent()
-      //document.getElementById("risk").innerHTML = riskp + "%";
+      if(temp.userInfo[0][3] != undefined){
+        document.getElementById("ax").innerHTML = temp.userInfo[0][3];
+        document.getElementById("ay").innerHTML = temp.userInfo[0][4];
+        document.getElementById("az").innerHTML = temp.userInfo[0][5];
+        document.getElementById("gx").innerHTML = temp.userInfo[0][6];
+        document.getElementById("gy").innerHTML = temp.userInfo[0][7];
+        document.getElementById("gz").innerHTML = temp.userInfo[0][8];
+        //let riskp = Percent()
+        //document.getElementById("risk").innerHTML = riskp + "%";
 
-      let risk = document.getElementById("risk");
-      risk.style.color = "white";
+        let risk = document.getElementById("risk");
+        risk.style.color = "white";
 
-      if(riskp <= 10){
-        risk.style.backgroundColor = "green";
-      } 
+        if(riskp <= 10){
+          risk.style.backgroundColor = "green";
+        } 
 
-      else if(riskp <= 25){
-        risk.style.backgroundColor = "orange";
+        else if(riskp <= 25){
+          risk.style.backgroundColor = "orange";
+        }
+
+        else {
+          risk.style.backgroundColor = "red";
+        }
+        $("#stat").show();
       }
-
-      else {
-        risk.style.backgroundColor = "red";
+      
+      else{
+        document.getElementById("test").innerHTML = document.getElementById("test").innerHTML +  "<br>No Data Available for this ID";
+        $("#stat").hide();
       }
     }
   }
