@@ -24,13 +24,13 @@ $(document).ready(function(){
     let temp = JSON.parse(ret);
     document.getElementById("test").innerHTML = temp.userInfo[0][0];
     if(Object.keys(temp).length == 1){
-      if(temp.userInfo[0][3] != undefined){
-        document.getElementById("ax").innerHTML = temp.userInfo[0][3];
-        document.getElementById("ay").innerHTML = temp.userInfo[0][4];
-        document.getElementById("az").innerHTML = temp.userInfo[0][5];
-        document.getElementById("gx").innerHTML = temp.userInfo[0][6];
-        document.getElementById("gy").innerHTML = temp.userInfo[0][7];
-        document.getElementById("gz").innerHTML = temp.userInfo[0][8];
+      if(temp.userInfo[9][3] != undefined){
+        document.getElementById("ax").innerHTML = (parseInt(temp.userInfo[9][2])*0.122/1000).toFixed(2);
+        document.getElementById("ay").innerHTML = (parseInt(temp.userInfo[9][3])*0.122/1000).toFixed(2);
+        document.getElementById("az").innerHTML = (parseInt(temp.userInfo[9][4])*0.122/1000).toFixed(2);
+        document.getElementById("gx").innerHTML = parseInt(temp.userInfo[9][5]);
+        document.getElementById("gy").innerHTML = parseInt(temp.userInfo[9][6]);
+        document.getElementById("gz").innerHTML = parseInt(temp.userInfo[9][7]);
         //let riskp = Percent()
         //document.getElementById("risk").innerHTML = riskp + "%";
 
@@ -53,6 +53,7 @@ $(document).ready(function(){
       
       else{
         document.getElementById("test").innerHTML = document.getElementById("test").innerHTML +  "<br>No Data Available for this ID";
+        document.getElementById("test").innerHTML = temp.userInfo[9];
         $("#stat").hide();
       }
     }
