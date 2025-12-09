@@ -21,6 +21,8 @@ class Plot{
 
     timeData = [];
 
+    mouse = { x: -10000, y: -10000}
+
     constructor(cnv){
         let ref = this;
 
@@ -38,12 +40,13 @@ class Plot{
 
         cnv.addEventListener("mousemove", function(e){
             let mousePos = { x: (e.clientX - cnv.getBoundingClientRect().left) * ref.docScaleX - Plot.TargetX / 2, y: -(e.clientY - cnv.getBoundingClientRect().top) * ref.docScaleY + Plot.TargetY / 2};
+            ref.mouse = mousePos;
             
             ref.Clear();
             ref.DrawRules();
             ref.DrawData();
 
-            ref.CheckHover(mousePos);
+            ref.CheckHover();
         });
     }
 
@@ -156,6 +159,7 @@ class Plot{
         this.Clear();
         this.DrawRules();
         this.DrawData();
+        this.CheckHover();
     }
 
     DataTip(mousePos, index){
@@ -182,12 +186,12 @@ class Plot{
         
     }
 
-    CheckHover(mousePos){
+    CheckHover(){
         for(let i = 0; i < this.datapos.length; i++){
-            let diff = Math.sqrt(Math.pow(mousePos.x - this.datapos[i].x, 2) + Math.pow(mousePos.y - this.datapos[i].y, 2));
+            let diff = Math.sqrt(Math.pow(this.mouse.x - this.datapos[i].x, 2) + Math.pow(this.mouse.y - this.datapos[i].y, 2));
 
             if(diff <= 30){
-                this.DataTip(mousePos, i);
+                this.DataTip(this.mouse, i);
             }
         }
     }
