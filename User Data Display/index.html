@@ -8,7 +8,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./style.css">
-        <script src="script.js"></script>
     </head>
     <body class="grid-container">
 
@@ -17,6 +16,9 @@
         </header>
 
         <main class="container">
+
+
+            <!--
             <h3 id="test"></h3>
 
             <u id="stat">
@@ -28,11 +30,42 @@
                 <div class="stat" id="gz"></div><br>
                 <div class="stat" id="risk"></div>
             </u>
+            -->
 
-            <div id="template" width="500px" height="600px">
-                <canvas id="templateCanvas" width="100%" height="100%"></canvas>
+            <h2>
+                Select Helmet
+                <br>
+                <select name="helmets" id="helmetSelect">
+                    <option value="None" selected="selected" disabled>None</option>
+                </select>
+            </h2>
+            
+
+            <div id="dataDisplay" width="600px" height="600px">
+                <h3>Risk</h3>
+                <h2 id="riskDisplay"></h2>
+                <hr>
+                <h2><canvas id="risk" width="500" height="250"></canvas></h2>
+                <h3>Acceleration</h3>
+                <hr>
+                <h5>X</h5>
+                <h2><canvas id="accelX" width="500" height="250"></canvas></h2>
+                <h5>Y</h5>
+                <h2><canvas id="accelY" width="500" height="250"></canvas></h2>
+                <h5>Z</h5>
+                <h2><canvas id="accelZ" width="500" height="250"></canvas></h2>
+                <h3>Gyroscope</h3>
+                <hr>
+                <h5>X</h5>
+                <h2><canvas id="gyroX" width="500" height="250"></canvas></h2>
+                <h5>Y</h5>
+                <h2><canvas id="gyroY" width="500" height="250"></canvas></h2>
+                <h5>Z</h5>
+                <h2><canvas id="gyroZ" width="500" height="250"></canvas></h2>
+                <h3>Temperature</h3>
+                <hr>
+                <h2><canvas id="temp" width="500" height="250"></canvas></h2>
             </div>
-
 
             <div class="settings">
                 <button><a href="../Settings & Control/index.html">Settings</a></button>
@@ -46,6 +79,6 @@
 
         <footer class = "container footer">&#169 Nathan Rogers & Hajay Lawson<br> last updated: NOV 11 2025</footer>
     </body>
-
     <script src="canvasControl.js"></script>
+    <script src="script.js"></script>
 </html>
