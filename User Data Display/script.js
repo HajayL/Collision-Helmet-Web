@@ -143,8 +143,14 @@ $(document).ready(function(){
 
     let riskp = risks[risks.length - 1];
 
-    if(riskp > riskHigh){
-      riskHigh = riskp;
+    for(let i = 0; i < risks.length; i++){
+      riskHigh += Number(risks[i]);
+      if(riskHigh > 100){
+        riskHigh = 100;
+      }
+      else if(riskHigh < 0){
+        riskHigh = 0;
+      }
     }
 
     let risk = $("#riskDisplay");
@@ -173,7 +179,7 @@ $(document).ready(function(){
   }
 
   fetchData();
-  setInterval(fetchData, 5000);
+  setInterval(fetchData, 100);
 
 });
 

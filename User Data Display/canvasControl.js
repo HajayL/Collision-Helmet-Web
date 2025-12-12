@@ -15,7 +15,7 @@ class Plot{
 
     dataset = [];
     datapos = [];
-    datarange = { min: -30, max: 30 };
+    datarange = { min: -100, max: 10 };
     displayrange = { min: 0, max: 0 };
     dataScale = 5;
 
