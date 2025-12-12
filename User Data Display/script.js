@@ -59,9 +59,9 @@ $(document).ready(function(){
           currentData[helmets[h]].accelX[currentData[helmets[h]].accelX.length] = (parseInt(data[helmets[h]][i].accel.x)*0.976/1000).toFixed(2);
           currentData[helmets[h]].accelY[currentData[helmets[h]].accelY.length] = -(parseInt(data[helmets[h]][i].accel.y)*0.976/1000).toFixed(2);
           currentData[helmets[h]].accelZ[currentData[helmets[h]].accelZ.length] = (parseInt(data[helmets[h]][i].accel.z)*0.976/1000).toFixed(2);
-          currentData[helmets[h]].gyroX[currentData[helmets[h]].gyroX.length] = (parseInt(data[helmets[h]][i].gyro.x)*70/1000).toFixed(2);
-          currentData[helmets[h]].gyroY[currentData[helmets[h]].gyroY.length] = (parseInt(data[helmets[h]][i].gyro.y)*70/1000).toFixed(2);
-          currentData[helmets[h]].gyroZ[currentData[helmets[h]].gyroZ.length] = (parseInt(data[helmets[h]][i].gyro.z)*70/1000).toFixed(2);
+          currentData[helmets[h]].gyroX[currentData[helmets[h]].gyroX.length] = (parseInt(data[helmets[h]][i].gyro.x)*0.07*(Math.PI/180)).toFixed(2);
+          currentData[helmets[h]].gyroY[currentData[helmets[h]].gyroY.length] = (parseInt(data[helmets[h]][i].gyro.y)*0.07*(Math.PI/180)).toFixed(2);
+          currentData[helmets[h]].gyroZ[currentData[helmets[h]].gyroZ.length] = (parseInt(data[helmets[h]][i].gyro.z)*0.07*(Math.PI/180)).toFixed(2);
           currentData[helmets[h]].temp[currentData[helmets[h]].temp.length] = (parseInt(data[helmets[h]][i].temp)/10).toFixed(1);
           currentData[helmets[h]].time[currentData[helmets[h]].time.length] = data[helmets[h]][i].time;
         }
@@ -176,3 +176,4 @@ $(document).ready(function(){
   setInterval(fetchData, 5000);
 
 });
+
