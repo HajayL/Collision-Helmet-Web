@@ -79,16 +79,19 @@ $(document).ready(function(){
       let [hour, minute, second] = temp3[1].split(":").map(Number);
       console.log([year, month, day]);
       console.log([hour, minute, second]);
-      // 12h → 24h conversion
       if (temp3[2] === "PM" && hour !== 12) hour += 12;
       if (temp3[2] === "AM" && hour === 12) hour = 0;
+      console.log(hour)
 
-      const temp2 = new Date(year, month, day, hour, minute, second);
+      const temp2 = new Date(year, month-1, day, hour, minute, second);
       console.log(temp1.getTime());
       console.log(temp2.getTime());
       console.log(Math.abs(temp1.getTime()-temp2.getTime())/1000);
       if(Math.abs(temp1-temp2)/1000 > 5){    
         $("#display").html("Disconnected");
+      }
+      else{
+        $("#display").hide();
       }
       
       DisplayData($("#helmetSelect").val());
@@ -168,7 +171,8 @@ $(document).ready(function(){
 
     let riskp = risks[risks.length - 1];
 
-    riskHigh += Number(risks[0]);
+    riskHigh += Number(riskp);
+    
     if(riskHigh > 100){
       riskHigh = 100;
     }
