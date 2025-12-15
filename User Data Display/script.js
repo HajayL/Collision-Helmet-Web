@@ -87,8 +87,9 @@ $(document).ready(function(){
       console.log(temp1.getTime());
       console.log(temp2.getTime());
       console.log(Math.abs(temp1.getTime()-temp2.getTime())/1000);
-      if(Math.abs(temp1-temp2)/1000 > 5){    
+      if(Math.abs(temp1-temp2)/1000 > 5.00){    
         $("#display").html("Disconnected");
+        $("#display").show();
       }
       else{
         $("#display").hide();
@@ -172,7 +173,7 @@ $(document).ready(function(){
     let riskp = risks[risks.length - 1];
 
     riskHigh += Number(riskp);
-    
+
     if(riskHigh > 100){
       riskHigh = 100;
     }
