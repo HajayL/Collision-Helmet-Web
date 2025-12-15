@@ -67,7 +67,7 @@ $(document).ready(function(){
           currentData[helmets[h]].gyroX[currentData[helmets[h]].gyroX.length] = (parseInt(data[helmets[h]][i].gyro.x)*0.07*(Math.PI/180)).toFixed(2);
           currentData[helmets[h]].gyroY[currentData[helmets[h]].gyroY.length] = (parseInt(data[helmets[h]][i].gyro.y)*0.07*(Math.PI/180)).toFixed(2);
           currentData[helmets[h]].gyroZ[currentData[helmets[h]].gyroZ.length] = (parseInt(data[helmets[h]][i].gyro.z)*0.07*(Math.PI/180)).toFixed(2);
-          currentData[helmets[h]].temp[currentData[helmets[h]].temp.length] = (parseInt(data[helmets[h]][i].temp)/10).toFixed(1);
+          currentData[helmets[h]].temp[currentData[helmets[h]].temp.length] = ((parseInt(data[helmets[h]][i].temp)/ 256.0) + 25.0).toFixed(1);
           currentData[helmets[h]].time[currentData[helmets[h]].time.length] = data[helmets[h]][i].time;
           temp3 = data[helmets[h]][i].time.trim().split(" ");
         }

@@ -15,9 +15,9 @@ class Plot{
 
     dataset = [];
     datapos = [];
-    datarange = { min: -100, max: 10 };
+    datarange = { min: -100, max: 100 };
     displayrange = { min: 0, max: 0 };
-    dataScale = 5;
+    dataScale = 25;
 
     timeData = [];
 
@@ -208,4 +208,7 @@ let gyroYGraph = new Plot(document.getElementById("gyroY"));
 let gyroZGraph = new Plot(document.getElementById("gyroZ"));
 
 tempGraph.SetRange({min: -50, max: 50});
+tempGraph.SetDataScale(10);
+
+tempGraph.SetRange({min: -20, max: 20});
 tempGraph.SetDataScale(10);
