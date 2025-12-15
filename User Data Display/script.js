@@ -12,7 +12,7 @@ $(document).ready(function(){
     let store = {};
    
     store = {UserID};
-    CallAJAX("https://localhost:7156/GetData", store, "POST", "json", SubmitDone, Error);
+    CallAJAX("https://localhost:7156/GetData", store, "POST", "json", SubmitDone, ErrorType);
   } 
 
   $("#relateBtn").click(() => {
@@ -29,6 +29,11 @@ $(document).ready(function(){
     let concorde = $.ajax(ajaxOptions);
     concorde.done(fxnSuccess);
     concorde.fail(fxnError);
+  }
+
+  function ErrorType(resp){
+    $("#display").html("Disconnected");
+    $("#dataDisplay").hide();
   }
 
   
@@ -53,7 +58,7 @@ $(document).ready(function(){
 
     if(resp.success && helmets.length > 0){
       $("#dataDisplay").show();
-
+      let temp3 = 0;
       for(let h = 0; h < helmets.length; h++){
         for(let i = data[helmets[h]].length - 1; i >= 0; i--){
           currentData[helmets[h]].accelX[currentData[helmets[h]].accelX.length] = (parseInt(data[helmets[h]][i].accel.x)*0.976/1000).toFixed(2);
@@ -64,12 +69,31 @@ $(document).ready(function(){
           currentData[helmets[h]].gyroZ[currentData[helmets[h]].gyroZ.length] = (parseInt(data[helmets[h]][i].gyro.z)*0.07*(Math.PI/180)).toFixed(2);
           currentData[helmets[h]].temp[currentData[helmets[h]].temp.length] = (parseInt(data[helmets[h]][i].temp)/10).toFixed(1);
           currentData[helmets[h]].time[currentData[helmets[h]].time.length] = data[helmets[h]][i].time;
+          temp3 = data[helmets[h]][i].time.trim().split(" ");
         }
+      }
+
+      const temp1 =  new Date();
+      console.log(temp3);
+      const [year, month, day] = temp3[0].split("-").map(Number);
+      let [hour, minute, second] = temp3[1].split(":").map(Number);
+
+      // 12h → 24h conversion
+      if (temp3[2] === "PM" && hour !== 12) hour += 12;
+      if (temp3[2] === "AM" && hour === 12) hour = 0;
+
+      const temp2 = new Date(year, month - 1, day, hour, minute, second);
+      console.log(Math.abs(temp1-temp2)/1000);
+      if(Math.abs(temp1-temp2)/1000 > 5){    
+        $("#display").html("Disconnected");
+        $("#dataDisplay").hide();
       }
       
       DisplayData($("#helmetSelect").val());
 
     }else{
+      $("#dataDisplay").hide();
+      $("#display").html("Disconnected");
       $("#dataDisplay").hide();
     }
 
