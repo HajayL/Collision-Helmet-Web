@@ -75,18 +75,20 @@ $(document).ready(function(){
 
       const temp1 =  new Date();
       console.log(temp3);
-      const [year, month, day] = temp3[0].split("-").map(Number);
+      const [month, day, year] = temp3[0].split("/").map(Number);
       let [hour, minute, second] = temp3[1].split(":").map(Number);
-
+      console.log([year, month, day]);
+      console.log([hour, minute, second]);
       // 12h → 24h conversion
       if (temp3[2] === "PM" && hour !== 12) hour += 12;
       if (temp3[2] === "AM" && hour === 12) hour = 0;
 
-      const temp2 = new Date(year, month - 1, day, hour, minute, second);
-      console.log(Math.abs(temp1-temp2)/1000);
+      const temp2 = new Date(year, month, day, hour, minute, second);
+      console.log(temp1.getTime());
+      console.log(temp2.getTime());
+      console.log(Math.abs(temp1.getTime()-temp2.getTime())/1000);
       if(Math.abs(temp1-temp2)/1000 > 5){    
         $("#display").html("Disconnected");
-        $("#dataDisplay").hide();
       }
       
       DisplayData($("#helmetSelect").val());
@@ -94,7 +96,6 @@ $(document).ready(function(){
     }else{
       $("#dataDisplay").hide();
       $("#display").html("Disconnected");
-      $("#dataDisplay").hide();
     }
 
     /*
@@ -144,7 +145,7 @@ $(document).ready(function(){
     const b2 = 0.000873;
     const b3 = -9.2e-7;
 
-    const z = b0 + b1 * accel + b2 * gyro + b3 * accel * gyro;
+    const z = b0 + b1 * accel + b2 * (gyro/0.0012) + b3 * accel * (gyro/0.0012);
     const final = 1 / (1 + Math.exp(-z));
     return (final * 100).toFixed(2);
   }
@@ -167,18 +168,16 @@ $(document).ready(function(){
 
     let riskp = risks[risks.length - 1];
 
-    for(let i = 0; i < risks.length; i++){
-      riskHigh += Number(risks[i]);
-      if(riskHigh > 100){
-        riskHigh = 100;
-      }
-      else if(riskHigh < 0){
-        riskHigh = 0;
-      }
+    riskHigh += Number(risks[0]);
+    if(riskHigh > 100){
+      riskHigh = 100;
+    }
+    else if(riskHigh < 0){
+      riskHigh = 0;
     }
 
     let risk = $("#riskDisplay");
-    risk.html(riskHigh + "%");
+    risk.html(riskHigh.toFixed(2) + "%");
 
     if(riskHigh <= 10){
       risk.css("color", "green");
@@ -203,7 +202,7 @@ $(document).ready(function(){
   }
 
   fetchData();
-  setInterval(fetchData, 100);
+  setInterval(fetchData, 1000);
 
 });
 
